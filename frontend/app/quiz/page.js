@@ -130,7 +130,7 @@ const Quiz = () => {
     }
 
   return (
-    <div className='quiz-container'>
+    <div className="quizContainer">
         <h1>Question N°{questNumber}</h1>
 
         {currentQuestion && (

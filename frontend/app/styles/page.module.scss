@@ -1,0 +1,47 @@
+@import "./config.scss";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: $black;
+  width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  overflow: hidden;
+  color: $whiteBroke;
+  h1 {
+    font-size: 3rem;
+    font-family: $russoOne;
+    .customIcon {
+      font-size: 3rem;
+      color: $gold;
+    }
+  }
+  .linkContainer {
+    margin: 20px;
+    h2 {
+      font-size: 2rem;
+      font-family: $montserrat;
+      color: $white;
+      margin-bottom: 50px;
+    }
+
+    .customLink {
+      padding: 15px 20px;
+      margin: 10px;
+      border: 1px solid $gold;
+      color: $gold;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        border-color: $whiteBroke;
+        color: $whiteBroke;
+        background-color: $gold;
+        border-radius: 20px;
+      }
+    }
+  }
+}

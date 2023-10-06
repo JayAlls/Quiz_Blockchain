@@ -1,0 +1,13 @@
+@import "../styles/config.scss";
+
+.quizContainer {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: $black;
+    color: $whiteBroke;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
