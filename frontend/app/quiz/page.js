@@ -17,6 +17,7 @@ const Quiz = () => {
     const [questNumber, setQuestNumber] = useState(1);
     const [score, setScore] = useState(0);
     const [username, setUsername] = useState('');
+    const [errorMessage, setErrorMessage] = useState(null);
 
 
     useEffect(() => {
@@ -44,6 +45,7 @@ const Quiz = () => {
           setQuestNumber(1); // Réinitialise le numéro de la question
           setScore(0); // Réinitialise le score
           setUsername(''); // Réinitialise le nom d'utilisateur
+          setErrorMessage(null) // Réinitialise le message d'erreur
         };
       }, []);
     
@@ -75,9 +77,11 @@ const Quiz = () => {
         // Passez à la question suivante
         if (questionArrayIndex < currentQuestion.questions.length - 1) {
             setQuestionArrayIndex(questionArrayIndex + 1);
-        } else if (currentQuestionIndex < data.length - 1) {
+            setQuestNumber(questNumber + 1);
+          } else if (currentQuestionIndex < data.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
             setQuestionArrayIndex(0);
+            setQuestNumber(questNumber + 1);
         } else {
             // Quiz terminé
             console.log("Quiz terminé");
@@ -85,12 +89,7 @@ const Quiz = () => {
 
         if (currentQuestionIndex === data.length - 1 && questionArrayIndex === currentQuestion.questions.length - 1) {
           setQuizFinished(true);
-        } 
-
-        if(questNumber === 10) {
-          alert('quiz terminé')
-        } else {
-          setQuestNumber(questNumber + 1)
+          alert('Quiz terminé');  // Ajoutez cette ligne pour afficher l'alerte
         }
 
       };
@@ -99,36 +98,36 @@ const Quiz = () => {
         setUsername(e.target.value);
       };
       
+      // ENVOI DU SCORE
       const submitScore = async () => {
         const payload = {
-            name: username,
-            score: score
+          name: username,
+          score: score
         };
-
+      
         try {
-            const response = await fetch("http://localhost:4200/api/participants/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            });
-
-            if (response.ok) {
-                // Redirigez l'utilisateur vers la page de classement
-                window.location.href = "/ranking";
-            } else {
-                console.error("Erreur lors de l'envoi du score");
-            }
+          const response = await fetch("http://localhost:4200/api/participants/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+          });
+      
+          if (response.ok) {
+            // Redirigez l'utilisateur vers la page de classement
+            window.location.href = "/ranking";
+          } else if (response.status === 400) {
+            // Gérer le cas où le pseudo est déjà pris
+            setErrorMessage("Ce pseudo est déjà utilisé.");
+          } else {
+            console.error("Erreur lors de l'envoi du score");
+          }
         } catch (err) {
-            console.error(err);
+          console.error(err);
         }
       };
-
-    const scored = () => {
-      setScore(score + 1);
-    }
-
+      
   return (
     <div className="quizContainer">
         <h1>Question N°{questNumber}</h1>
@@ -144,14 +143,17 @@ const Quiz = () => {
         )}
 
         {optionSelected !== null && (
-            <button onClick={nextQuestion}>Suivant</button>
+            <button onClick={nextQuestion} className='nextButton'>Suivant</button>
         )}
 
         {quizFinished && (
-            <>
+            <div className='inputContainer'>
+              <div>
                 <input type="text" placeholder="Entrez votre pseudo" value={username} onChange={handleUsernameChange} />
-                <button onClick={submitScore}>Envoyer</button>
-            </>
+                {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+              </div>
+                <button onClick={submitScore} className='nextButton'>Envoyer</button>
+            </div>
         )}
     </div>
   )

@@ -7,26 +7,47 @@
   align-items: center;
   text-align: center;
   background: $black;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   max-height: 100%;
   overflow: hidden;
   color: $whiteBroke;
+
   h1 {
     font-size: 3rem;
     font-family: $russoOne;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+
     .customIcon {
       font-size: 3rem;
       color: $gold;
+
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
     }
   }
+
   .linkContainer {
     margin: 20px;
+
+    @media (max-width: 768px) {
+      margin: 10px;
+    }
+
     h2 {
       font-size: 2rem;
       font-family: $montserrat;
       color: $white;
       margin-bottom: 50px;
+
+      @media (max-width: 768px) {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+      }
     }
 
     .customLink {
@@ -36,12 +57,43 @@
       color: $gold;
       text-decoration: none;
       transition: all 0.3s ease-in-out;
+
       &:hover {
         border-color: $whiteBroke;
         color: $whiteBroke;
         background-color: $gold;
         border-radius: 20px;
       }
+
+      @media (max-width: 768px) {
+        padding: 10px 15px;
+        margin: 5px;
+      }
     }
   }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.5rem;
+
+      .customIcon {
+        font-size: 1.5rem;
+      }
+    }
+
+    .linkContainer {
+      margin: 10px;
+
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+      }
+
+      .customLink {
+        padding: 8px 12px;
+        margin: 5px;
+      }
+    }
+  }
+
 }

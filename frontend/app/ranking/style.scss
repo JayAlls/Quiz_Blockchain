@@ -1,16 +1,58 @@
+@import "../styles/config.scss";
+
+.ranking {
+  min-height: 100vh;
+  height: auto;
+  background-color: $black; // Définit l'arrière-plan en noir
+  color: $gold; // Définit la couleur du texte en or
+  padding: 20px; // Ajoute un peu d'espacement autour du contenu
+}
+
+.text-center {
+  text-align: center;
+  font-family: $montserrat;
+  color: $gold;
+}
+
 .ranking-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .ranking-table th,
-  .ranking-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  color: $gold;  // Changé à la couleur d'or pour une meilleure visibilité
+
+  th, td {
+    border: 1px solid $gold;
+    padding: 10px;
     text-align: center;
+    font-family: $montserrat;
   }
-  
-  .ranking-table th {
-    background-color: #f2f2f2;
+
+  th {
+    background-color: $gold;
+    color: $black;
   }
-  
+
+  tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 1px solid $gold;
+  background-color: $black;
+  color: $gold;
+  font-family: $montserrat;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $gold;
+    color: $black;
+  }
+}

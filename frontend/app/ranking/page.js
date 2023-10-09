@@ -1,7 +1,7 @@
 'use client';
 
-import "./style.scss"
-import React, { useEffect } from 'react'
+import "./style.scss";
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 
 const Ranking = () => {
@@ -25,8 +25,9 @@ const Ranking = () => {
     window.location.href = "/"
   }
   return (
-    <div>
+    <div className="ranking">
         <h1 className="text-center">Classement</h1>
+        <button onClick={returnHome}>Home</button>
 
         <table className="ranking-table">
           <thead>
@@ -46,7 +47,6 @@ const Ranking = () => {
             ))}
           </tbody>
         </table>
-        <button onClick={returnHome}>Home</button>
     </div>
   )
 }

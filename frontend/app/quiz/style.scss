@@ -1,13 +1,91 @@
 @import "../styles/config.scss";
 
+
+
 .quizContainer {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: $black;
     color: $whiteBroke;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 
+    h1, h2, button, input[type="text"] {
+        transition: all 0.3s ease-in-out;
+    }
+
+  h1 {
+    font-size: 3rem;
+    font-family: $russoOne;
+    color: $gold;
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-family: $montserrat;
+    margin-top: 20px;
+    color: $white;
+    margin: 0;
+    margin-bottom: 40px;
+  }
+
+  button {
+    width: 500px;
+    height: 55px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    background-color: $gold;
+    border: none;
+    border-radius: 10px;
+    color: $black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $whiteBroke;
+      color: $black;
+    }
+  }
+
+  .inputContainer{
+    width: 500px;
+    height: 60px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    max-height: 50px;
+    margin-top: 20px;
+    font-size: 1.2rem;
+    border: 1px solid $whiteBroke;
+    background: transparent;
+    color: $whiteBroke;
+  }
+
+  .nextButton {
+    width: 200px !important;
+    height: 50px !important;
+    background-color: transparent;
+    color: $gold;
+    border: 1px solid $gold;
+    transition: all 0.4s ease-in-out;
+    &:hover{
+        background-color: $gold;
+        color: $black;
+    }
+  }
+  
+  .invisibleButton {
+    visibility: hidden;
+  }
+}
