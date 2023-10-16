@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const quizRoutes = require('./routes/quizRoute');
 const participantRoutes = require('./routes/participantRoute');
 
+mongoose.set("strictQuery", true);
 const app = express();
 app.use(express.json());
 
