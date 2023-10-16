@@ -1,7 +1,6 @@
 require('dotenv').config();  // Ajout de cette ligne pour charger les variables d'environnement
 
 const express = require("express");
-const helmet = require('helmet');
 const mongoose = require("mongoose");
 const quizRoutes = require('./routes/quizRoute');
 const participantRoutes = require('./routes/participantRoute');
@@ -9,7 +8,6 @@ const participantRoutes = require('./routes/participantRoute');
 const app = express();
 app.use(express.json());
 
-app.use(helmet());
 
 // Connexion à MongoDB
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })  // Utilisation de la variable d'environnement
