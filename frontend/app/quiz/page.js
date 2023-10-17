@@ -23,7 +23,7 @@ const Quiz = () => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch("http://localhost:4200/api/quiz");
+            const response = await fetch("https://quiz-blockchain.onrender.com/api/quiz");
             const jsonData = await response.json();
             setData(jsonData);
             // console.log(jsonData[currentQuestionIndex].questions[questionArrayIndex].options);
@@ -106,7 +106,7 @@ const Quiz = () => {
         };
       
         try {
-          const response = await fetch("http://localhost:4200/api/participants/submit", {
+          const response = await fetch("https://quiz-blockchain.onrender.com/api/participants/submit", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
