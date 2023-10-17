@@ -10,7 +10,7 @@ const Ranking = () => {
   useEffect(() => {
     const fetchData = async() => {
       try {
-        const response = await fetch("http://localhost:4200/api/participants/ranking");
+        const response = await fetch("https://quiz-blockchain.onrender.com/api/participants/ranking");
         const jsonData = await response.json();
         setRanking(jsonData);
         console.log(jsonData)
